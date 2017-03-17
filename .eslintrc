@@ -1,0 +1,23 @@
+{
+    "extends": "airbnb-base",
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "sourceType": "script",
+      "ecmaFeatures": {
+        "modules": false
+      }
+    },
+    "rules": {
+      "linebreak-style": 0,
+      "strict": ["error", "global"],
+      "comma-dangle": ["warn", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "functions": "ignore",
+      }],
+      no-unused-vars: ["error", { "argsIgnorePattern": "^_" }]
+    }
+}
