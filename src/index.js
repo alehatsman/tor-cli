@@ -1,34 +1,35 @@
 'use strict';
 
 const commander = require('commander');
-const { connect, disconnect, tor } = require('tor-control');
-
-async function withTorConnection(cb) {
-  const connection = await connect({ password: process.env.TOR_PASSWORD });
-  await cb(connection);
-  await disconnect(connection);
-}
+const actions = require('./actions');
 
 commander
   .version('0.0.1');
 
+// custom functions
+
+commander
+  .command('socks-info [network]')
+  .description('show socks-info for network')
+  .action(network => actions.socksInfo(network));
+
+// signals
+
 commander
   .command('dump')
-  .action(() => {
-    withTorConnection(async (conn) => {
-      const res = await tor.signalDump(conn);
-      console.log(res);
-    });
-  });
+  .description('log information about open connections and circuits')
+  .action(() => actions.dump());
 
 commander
   .command('newnym')
-  .action(() => {
-    withTorConnection(async (conn) => {
-      const res = await tor.signalNewNYM(conn);
-      console.log(res);
-    });
-  });
+  .description('switch to clean circuits')
+  .action(() => actions.newnym());
+
+// commands
+
+commander
+  .command('getInfo [keys...]')
+  .action(keys => actions.getInfo(keys));
 
 commander.parse(process.argv);
 

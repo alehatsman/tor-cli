@@ -9,7 +9,7 @@
   "dependencies": {
     "commander": "^2.9.0",
     "node-fetch": "^1.6.3",
-    "tor-control": "git://github.com/Atsman/node-tor-control"
+    "node-tor-control": "git://github.com/Atsman/node-tor-control"
   },
   "devDependencies": {
     "eslint": "^3.16.1",
