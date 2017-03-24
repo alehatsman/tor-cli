@@ -4,9 +4,10 @@
 
 const commander = require('commander');
 const actions = require('./actions');
+const packageJson = require('../package.json');
 
 commander
-  .version('0.0.1');
+  .version(packageJson.version);
 
 // custom functions
 
@@ -28,7 +29,8 @@ commander
 // signals
 
 commander
-  .command('newnym')
+  .command('signal-newnym')
+  .alias('sn')
   .description('switch to clean circuits')
   .action(() => actions.newnym());
 
