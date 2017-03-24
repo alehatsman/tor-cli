@@ -1,6 +1,6 @@
 {
   "name": "tor-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tor command line control for tor process",
   "main": "index.js",
   "repository": "https://github.com/Atsman/tor-cli.git",
