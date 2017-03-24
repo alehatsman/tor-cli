@@ -1,6 +1,8 @@
 'use strict';
 
-const { connect, disconnect, tor, network } = require('node-tor-control');
+/* eslint no-console: 0 */
+
+const { connect, disconnect, tor, socks } = require('node-tor-control');
 
 const config = {
   password: process.env.TOR_PASSWORD,
@@ -16,11 +18,34 @@ async function withTorConnection(cb) {
   }
 }
 
-// custom functions
+// socks actions
 
 async function socksInfo(networkName) {
   try {
-    const info = await network.getSocksProxyInfo(networkName);
+    const info = await socks.getSocksProxyInfo(networkName);
+    console.log(`
+      Enabled: ${info.enabled}\r
+      Server: ${info.server}\r
+      Port: ${info.port}\r
+      Auth enabled: ${info.authEnabled}\r
+    `);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function enableSocksProxy(networkName) {
+  try {
+    const info = await socks.enableSocksProxy(networkName);
+    console.log(info);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function disableSocksProxy(networkName) {
+  try {
+    const info = await socks.disableSocksProxy(networkName);
     console.log(info);
   } catch (e) {
     console.error(e);
@@ -59,6 +84,8 @@ function getInfo(keys) {
 
 module.exports = {
   socksInfo,
+  enableSocksProxy,
+  disableSocksProxy,
   dump,
   newnym,
   getInfo,

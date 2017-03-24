@@ -6,6 +6,7 @@
   "repository": "https://github.com/Atsman/tor-cli.git",
   "author": "Aleh Atsman <aleh.atsman@gmail.com>",
   "license": "MIT",
+  "bin": "./src/index.js",
   "dependencies": {
     "commander": "^2.9.0",
     "node-fetch": "^1.6.3",

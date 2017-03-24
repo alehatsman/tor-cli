@@ -13,6 +13,16 @@ commander
   .description('show socks-info for network')
   .action(network => actions.socksInfo(network));
 
+commander
+  .command('enable-socks-proxy [network]')
+  .description('enables socks proxy')
+  .action(network => actions.enableSocksProxy(network));
+
+commander
+  .command('disable-socks-proxy [network]')
+  .description('disables socks proxy')
+  .action(network => actions.disableSocksProxy(network));
+
 // signals
 
 commander
@@ -29,6 +39,7 @@ commander
 
 commander
   .command('getInfo [keys...]')
+  .description('get information that is not stored in configuration file')
   .action(keys => actions.getInfo(keys));
 
 commander.parse(process.argv);
