@@ -28,11 +28,6 @@ commander
 // signals
 
 commander
-  .command('dump')
-  .description('log information about open connections and circuits')
-  .action(() => actions.dump());
-
-commander
   .command('newnym')
   .description('switch to clean circuits')
   .action(() => actions.newnym());

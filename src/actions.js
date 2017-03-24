@@ -54,13 +54,6 @@ async function disableSocksProxy(networkName) {
 
 // signals
 
-function dump() {
-  withTorConnection(async (conn) => {
-    const res = await tor.signalDump(conn);
-    console.log(res);
-  });
-}
-
 function newnym() {
   withTorConnection(async (conn) => {
     const res = await tor.signalNewNYM(conn);
@@ -86,7 +79,6 @@ module.exports = {
   socksInfo,
   enableSocksProxy,
   disableSocksProxy,
-  dump,
   newnym,
   getInfo,
 };
