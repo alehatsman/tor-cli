@@ -1,16 +1,18 @@
 {
   "name": "tor-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tor command line control for tor process",
   "main": "index.js",
   "repository": "https://github.com/Atsman/tor-cli.git",
   "author": "Aleh Atsman <aleh.atsman@gmail.com>",
   "license": "MIT",
-  "bin": "./src/index.js",
+  "bin": {
+    "torc": "./src/index.js"
+  },
   "dependencies": {
     "commander": "^2.9.0",
     "node-fetch": "^1.6.3",
-    "node-tor-control": "git://github.com/Atsman/node-tor-control"
+    "node-tor-control": "0.0.2"
   },
   "devDependencies": {
     "eslint": "^3.16.1",
